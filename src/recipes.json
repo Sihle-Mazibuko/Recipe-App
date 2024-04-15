@@ -1,0 +1,25 @@
+{
+  "recipes": [
+    {
+      "name": "Mac and Cheese",
+      "prepTime": "15 minutes",
+      "vegetarian": true,
+      "lactoseFree": false,
+      "mealTime": ["Lunch, Dinner"]
+    },
+    {
+      "name": "Mac and Cheese",
+      "prepTime": "15 minutes",
+      "vegetarian": true,
+      "lactoseFree": false,
+      "mealTime": ["Lunch, Dinner"]
+    },
+    {
+      "name": "Mac and Cheese",
+      "prepTime": "15 minutes",
+      "vegetarian": true,
+      "lactoseFree": false,
+      "mealTime": ["Lunch, Dinner"]
+    }
+  ]
+}
