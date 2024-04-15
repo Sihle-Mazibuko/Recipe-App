@@ -1,12 +1,15 @@
 import React from "react";
-import ReactCard from "./RecipeCard";
+import RecipeCard from "./RecipeCard";
+import { Plate } from "phosphor-react";
 
-// function RecipeList({recipes}){
-//     return(
-//         <div className="recipe-List">
-//         {recipes.map(recipe =>(
-//     recipe={recipe}/>
-//     ))}
-//         </div>
-//     );
-// }
+function RecipeList({ recipes }) {
+  return (
+    <article className="recipe-list">
+      {recipes.map((recipe) => (
+        <RecipeCard key={recipe.name} recipe={recipe} />
+      ))}
+    </article>
+  );
+}
+
+export default RecipeList;

@@ -8,18 +8,32 @@
       "mealTime": ["Lunch, Dinner"]
     },
     {
-      "name": "Mac and Cheese",
-      "prepTime": "15 minutes",
+      "name": "Noodles",
+      "prepTime": "5 minutes",
       "vegetarian": true,
-      "lactoseFree": false,
+      "lactoseFree": true,
+      "mealTime": ["Breakfast, Lunch, Dinner"]
+    },
+    {
+      "name": "Veggie Stir-Fry Rice",
+      "prepTime": "20 minutes",
+      "vegetarian": true,
+      "lactoseFree": true,
       "mealTime": ["Lunch, Dinner"]
     },
     {
-      "name": "Mac and Cheese",
-      "prepTime": "15 minutes",
+      "name": "Cheese Sandwich",
+      "prepTime": "7 minutes",
       "vegetarian": true,
       "lactoseFree": false,
-      "mealTime": ["Lunch, Dinner"]
+      "mealTime": ["Breakfast, Lunch, Dinner"]
+    },
+    {
+      "name": "Mince and spaghetti",
+      "prepTime": "30 minutes",
+      "vegetarian": false,
+      "lactoseFree": false,
+      "mealTime": ["Dinner"]
     }
   ]
 }
