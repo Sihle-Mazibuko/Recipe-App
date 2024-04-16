@@ -1,6 +1,6 @@
 import React from "react";
 import "./RecipeCard.css";
-import { ForkKnife, Leaf, Check } from "phosphor-react";
+import { ForkKnife, Leaf, Check, Heart } from "phosphor-react";
 
 function RecipeCard({ recipe }) {
   return (
@@ -9,7 +9,12 @@ function RecipeCard({ recipe }) {
         <ForkKnife />
       </section>
       <section className="recipe-details">
-        <h3>{recipe.name}</h3>
+        <h3>
+          {recipe.name}
+          <span className="heart-icon">
+            <Heart />
+          </span>
+        </h3>
 
         {recipe.vegetarian ? ( // show leaf
           <p>

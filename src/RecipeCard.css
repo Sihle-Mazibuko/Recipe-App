@@ -41,3 +41,8 @@
 .recipe-details p svg {
   margin-right: 5px;
 }
+
+.heart-icon {
+  vertical-align: middle;
+  margin-left: 7px;
+}
