@@ -1,16 +1,15 @@
-// App.js
-
 import React, { useState } from "react";
 import "./App.css";
 import "./Foot.css";
 import RecipeList from "./RecipeList";
 import recipeData from "./recipes.json";
 import NavBar from "./NavBar";
-import LargeRecipeCard from "./LargeRecipeCard"; // Import LargeRecipeCard component
+import { MagnifyingGlass } from "phosphor-react";
+import LargeRecipeCard from "./LargeRecipeCard.js"; // Import LargeRecipeCard component
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedRecipe, setSelectedRecipe] = useState(null); // State to store the selected recipe
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
 
   // Filter recipes based on the search query
   const filteredRecipes = recipeData.recipes.filter((recipe) =>
@@ -22,9 +21,14 @@ function App() {
     setSearchQuery(event.target.value);
   };
 
-  // Handle click on recipe card to select the recipe
+  // Handle click on recipe card to show large card
   const handleRecipeClick = (recipe) => {
-    setSelectedRecipe(recipe); // Set the selected recipe
+    setSelectedRecipe(recipe);
+  };
+
+  // Handle close of large card
+  const handleCloseLargeCard = () => {
+    setSelectedRecipe(null);
   };
 
   return (
@@ -40,18 +44,22 @@ function App() {
                 value={searchQuery}
                 onChange={handleSearchInputChange}
               />
+              <MagnifyingGlass className="search-icon" />
             </div>
           </nav>
         </div>
         <NavBar /> {/* show navigation bar */}
       </header>
       <main>
-        {selectedRecipe ? ( // Render the large card if a recipe is selected
-          <LargeRecipeCard recipe={selectedRecipe} />
+        {selectedRecipe ? (
+          <LargeRecipeCard
+            recipe={selectedRecipe}
+            onClose={handleCloseLargeCard}
+          />
         ) : (
           <RecipeList
             recipes={filteredRecipes}
-            onRecipeClick={handleRecipeClick} // Pass the click handler to RecipeList
+            onRecipeClick={handleRecipeClick}
           />
         )}
       </main>
