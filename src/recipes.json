@@ -5,35 +5,80 @@
       "prepTime": "15 minutes",
       "vegetarian": true,
       "lactoseFree": false,
-      "mealTime": ["Lunch, Dinner"]
+      "mealTime": ["Lunch", "Dinner"],
+      "favourited": false
     },
     {
       "name": "Noodles",
       "prepTime": "5 minutes",
       "vegetarian": true,
       "lactoseFree": true,
-      "mealTime": ["Breakfast, Lunch, Dinner"]
+      "mealTime": ["Breakfast", "Lunch", "Dinner"],
+      "favourited": false
     },
     {
       "name": "Veggie Stir-Fry Rice",
       "prepTime": "20 minutes",
       "vegetarian": true,
       "lactoseFree": true,
-      "mealTime": ["Lunch, Dinner"]
+      "mealTime": ["Lunch", "Dinner"],
+      "favourited": false
     },
     {
       "name": "Cheese Sandwich",
       "prepTime": "7 minutes",
       "vegetarian": true,
       "lactoseFree": false,
-      "mealTime": ["Breakfast, Lunch, Dinner"]
+      "mealTime": ["Breakfast", "Lunch", "Dinner"],
+      "favourited": false
     },
     {
       "name": "Mince and spaghetti",
       "prepTime": "30 minutes",
       "vegetarian": false,
       "lactoseFree": false,
-      "mealTime": ["Dinner"]
+      "mealTime": ["Dinner"],
+      "favourited": false
+    },
+    {
+      "name": "Grilled Chicken Salad",
+      "prepTime": "20 minutes",
+      "vegetarian": false,
+      "lactoseFree": true,
+      "mealTime": ["Lunch"],
+      "favourited": false
+    },
+    {
+      "name": "Vegetable Soup",
+      "prepTime": "25 minutes",
+      "vegetarian": true,
+      "lactoseFree": true,
+      "mealTime": ["Lunch", "Dinner"],
+      "favourited": false
+    },
+    {
+      "name": "Fruit Salad",
+      "prepTime": "10 minutes",
+      "vegetarian": true,
+      "lactoseFree": true,
+      "mealTime": ["Breakfast", "Lunch", "Dinner"],
+      "favourited": false
+    },
+    {
+      "name": "Pasta Carbonara",
+      "prepTime": "20 minutes",
+      "vegetarian": false,
+      "lactoseFree": false,
+      "mealTime": ["Dinner"],
+      "favourited": false
+    },
+    {
+      "name": "Avocado Toast",
+      "prepTime": "10 minutes",
+      "vegetarian": true,
+      "lactoseFree": true,
+      "mealTime": ["Breakfast", "Lunch"],
+      "favourited": false
     }
   ]
 }

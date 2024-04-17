@@ -30,7 +30,7 @@ function NavBar() {
             </ul>
           )}
         </li>
-        <li className="menu-item">Favourties</li>
+        <li className="menu-item">Favourites</li>
       </ul>
     </nav>
   );
