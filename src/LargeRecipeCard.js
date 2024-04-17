@@ -1,8 +1,7 @@
 import React from "react";
 import "./LargeCard.css"; // Import the CSS file for styling
-import { XCircle } from "phosphor-react"; // Import the CircleX icon
 
-function LargeRecipeCard({ recipe, onClose }) {
+function LargeRecipeCard({ recipe }) {
   // Sample Lorem Ipsum text for instructions
   const loremText = `
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -15,22 +14,13 @@ function LargeRecipeCard({ recipe, onClose }) {
     Integer quis nibh vitae ligula hendrerit vestibulum.
   `;
 
-  // Handle click on close button
-  const handleCloseClick = () => {
-    onClose();
-  };
-
   return (
     <div className="large-recipe-card">
-      <div className="close-icon" onClick={onClose}>
-        {" "}
-        <XCircle size={24} />
-      </div>
       <h2>{recipe.name}</h2>
       <p>{recipe.vegetarian ? "Vegetarian" : "Not Vegetarian"}</p>
       <p>{recipe.lactoseFree ? "Lactose-Free" : "Contains Dairy"}</p>
       <p>Prep Time: {recipe.prepTime}</p>
-      <p>Instructions: {loremText}</p>
+      <p>Instructions: {recipe.instructions || loremText}</p>
     </div>
   );
 }

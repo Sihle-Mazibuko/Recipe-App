@@ -1,15 +1,16 @@
+// App.js
+
 import React, { useState } from "react";
 import "./App.css";
 import "./Foot.css";
 import RecipeList from "./RecipeList";
 import recipeData from "./recipes.json";
 import NavBar from "./NavBar";
-import { MagnifyingGlass } from "phosphor-react";
 import LargeRecipeCard from "./LargeRecipeCard"; // Import LargeRecipeCard component
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [selectedRecipe, setSelectedRecipe] = useState(null); // State to store the selected recipe
 
   // Filter recipes based on the search query
   const filteredRecipes = recipeData.recipes.filter((recipe) =>
@@ -21,14 +22,9 @@ function App() {
     setSearchQuery(event.target.value);
   };
 
-  // Handle click on recipe card to show large card
+  // Handle click on recipe card to select the recipe
   const handleRecipeClick = (recipe) => {
-    setSelectedRecipe(recipe);
-  };
-
-  // Handle close of large card
-  const handleCloseLargeCard = () => {
-    setSelectedRecipe(null);
+    setSelectedRecipe(recipe); // Set the selected recipe
   };
 
   return (
@@ -44,22 +40,18 @@ function App() {
                 value={searchQuery}
                 onChange={handleSearchInputChange}
               />
-              <MagnifyingGlass className="search-icon" />
             </div>
           </nav>
         </div>
         <NavBar /> {/* show navigation bar */}
       </header>
       <main>
-        {selectedRecipe ? (
-          <LargeRecipeCard
-            recipe={selectedRecipe}
-            onClose={handleCloseLargeCard}
-          />
+        {selectedRecipe ? ( // Render the large card if a recipe is selected
+          <LargeRecipeCard recipe={selectedRecipe} />
         ) : (
           <RecipeList
             recipes={filteredRecipes}
-            onRecipeClick={handleRecipeClick}
+            onRecipeClick={handleRecipeClick} // Pass the click handler to RecipeList
           />
         )}
       </main>
