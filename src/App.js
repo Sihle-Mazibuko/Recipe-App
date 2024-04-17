@@ -4,24 +4,36 @@ import "./Foot.css";
 import RecipeList from "./RecipeList";
 import recipeData from "./recipes.json";
 import NavBar from "./NavBar";
-import { MagnifyingGlass } from "phosphor-react";
-import LargeRecipeCard from "./LargeRecipeCard.js"; // Import LargeRecipeCard component
+import LargeRecipeCard from "./LargeRecipeCard";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [filter, setFilter] = useState("all");
 
-  // Filter recipes based on the search query
-  const filteredRecipes = recipeData.recipes.filter((recipe) =>
-    recipe.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // Filter recipes based on the search query and filter option
+  const filteredRecipes = recipeData.recipes.filter((recipe) => {
+    const nameMatches = recipe.name
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+    if (filter === "all") return nameMatches;
+    if (filter === "vegetarian") return recipe.vegetarian && nameMatches;
+    if (filter === "lactoseFree") return recipe.lactoseFree && nameMatches;
+    if (filter === "breakfast")
+      return recipe.mealTime.includes("Breakfast") && nameMatches;
+    if (filter === "lunch")
+      return recipe.mealTime.includes("Lunch") && nameMatches;
+    if (filter === "dinner")
+      return recipe.mealTime.includes("Dinner") && nameMatches;
+    return nameMatches;
+  });
 
   // Handle search input change
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
-  // Handle click on recipe card to show large card
+  // Handle recipe card click to show large card
   const handleRecipeClick = (recipe) => {
     setSelectedRecipe(recipe);
   };
@@ -29,6 +41,11 @@ function App() {
   // Handle close of large card
   const handleCloseLargeCard = () => {
     setSelectedRecipe(null);
+  };
+
+  // Handle filter change
+  const handleFilterChange = (filterOption) => {
+    setFilter(filterOption);
   };
 
   return (
@@ -44,11 +61,10 @@ function App() {
                 value={searchQuery}
                 onChange={handleSearchInputChange}
               />
-              <MagnifyingGlass className="search-icon" />
             </div>
           </nav>
         </div>
-        <NavBar /> {/* show navigation bar */}
+        <NavBar onFilterChange={handleFilterChange} />
       </header>
       <main>
         {selectedRecipe ? (
@@ -63,9 +79,9 @@ function App() {
           />
         )}
       </main>
-      <footer>
+      {/* <footer>
         <p>&copy; 2024 Easy Eats. All rights reserved.</p>
-      </footer>
+      </footer> */}
     </div>
   );
 }
