@@ -7,21 +7,24 @@ import NavBar from "./NavBar";
 import LargeRecipeCard from "./LargeRecipeCard";
 
 function App() {
+  // these state hooks handle searching for recipes, filtering and favouriting
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [filter, setFilter] = useState("all");
+  const [favouriteRecipes, setFavouriteRecipes] = useState([]);
 
-  // Function to handle toggling the "favourited" property of a recipe
-  const handleFavoriteToggle = (recipeName) => {
-    recipeData.recipes.forEach((recipe) => {
+  // this function handles toggling the "favourited" property of a recipe
+  const handleFavouriteToggle = (recipeName) => {
+    const updatedRecipes = recipeData.recipes.map((recipe) => {
       if (recipe.name === recipeName) {
-        recipe.favourited = !recipe.favourited;
-        console.log(`${recipe.name} has been favourited.`);
+        return { ...recipe, favourited: !recipe.favourited };
       }
+      return recipe;
     });
+    setFavouriteRecipes(updatedRecipes.filter((recipe) => recipe.favourited));
   };
 
-  // Filter recipes based on the search query and filter option
+  // this filters recipes based on the search input and filter option
   const filteredRecipes = recipeData.recipes.filter((recipe) => {
     const nameMatches = recipe.name
       .toLowerCase()
@@ -38,30 +41,30 @@ function App() {
     return nameMatches;
   });
 
-  // Handle search input change
+  // handles search input and output of changing the recipes displayed
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
-  // Handle recipe card click to show large card
+  // handles clicking on small recipe cards to show large recipe card
   const handleRecipeClick = (recipe) => {
     setSelectedRecipe(recipe);
   };
 
-  // Handle close of large card
+  // handles closing large recipe card
   const handleCloseLargeCard = () => {
     setSelectedRecipe(null);
   };
 
-  // Handle filter change
+  // handles the filter change
   const handleFilterChange = (filterOption) => {
     setFilter(filterOption);
   };
 
   return (
-    <html className="app-container">
+    <div className="app-container">
       <header>
-        <section className="header-content">
+        <div className="header-content">
           <h1>Easy Eats</h1>
           <nav className="search-bar">
             <div className="search-container">
@@ -73,15 +76,18 @@ function App() {
               />
             </div>
           </nav>
-        </section>
-        <NavBar onFilterChange={handleFilterChange} />
+        </div>
+        <NavBar
+          onFilterChange={handleFilterChange}
+          favouriteRecipes={favouriteRecipes}
+        />
       </header>
       <main>
         {selectedRecipe ? (
           <LargeRecipeCard
             recipe={selectedRecipe}
             onClose={handleCloseLargeCard}
-            onFavoriteToggle={handleFavoriteToggle}
+            onFavoriteToggle={handleFavouriteToggle}
           />
         ) : (
           <RecipeList
@@ -90,11 +96,19 @@ function App() {
           />
         )}
       </main>
-      {/* <footer>
-        <p>&copy; 2024 Easy Eats. All rights reserved.</p>
-      </footer> */}
-    </html>
+      {
+        <footer>
+          {/* <p>&copy; 2024 Easy Eats. All rights reserved.</p> */}
+        </footer>
+      }
+    </div>
   );
 }
+
+/* 
+the app component is the main component of the application.
+not only does it display the actual application components and layout such as the header, navbar, main content and footer content
+it manages the state of search query, selected recipe, filter option, and favourite recipes.
+*/
 
 export default App;

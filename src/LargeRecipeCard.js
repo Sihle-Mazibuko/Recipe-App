@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./LargeCard.css"; // Import the CSS file for styling
-import { XCircle, Heart } from "phosphor-react"; // Import the CircleX icon
+import "./LargeCard.css";
+import { XCircle, Heart } from "phosphor-react";
 
 function LargeRecipeCard({ recipe, onClose, onFavoriteToggle }) {
-  const [isFavourited, setIsFavourited] = useState(recipe.favourited); // State hook to manage the favourited state
+  const [isFavourited, setIsFavourited] = useState(recipe.favourited); // state hook to used manage the favourited state
 
   const loremText = `
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -16,17 +16,17 @@ function LargeRecipeCard({ recipe, onClose, onFavoriteToggle }) {
     Integer quis nibh vitae ligula hendrerit vestibulum.
   `;
 
-  // Handle click on close button
+  // manages clicks that occur on the close button (closes the large card)
   const handleCloseClick = () => {
     onClose();
   };
 
-  // Handle click on favorite button
-  const handleFavoriteClick = () => {
+  // manages click on favourite button (add recipe to favourties)
+  const handleFavouriteClick = () => {
     const updatedFavourited = !isFavourited; // Toggle the favourited state
     setIsFavourited(updatedFavourited); // Update the state
 
-    // Call the onFavoriteToggle function passed from the parent component
+    // calls the onFavoriteToggle function passed from the parent component so we can regularly update our favourite recipes
     onFavoriteToggle(recipe, updatedFavourited);
   };
 
@@ -40,11 +40,18 @@ function LargeRecipeCard({ recipe, onClose, onFavoriteToggle }) {
       <p>{recipe.lactoseFree ? "Lactose-Free" : "Contains Dairy"}</p>
       <p>Prep Time: {recipe.prepTime}</p>
       <p>Instructions: {loremText}</p>
-      <button className="favorite-button" onClick={handleFavoriteClick}>
+      <button className="favourite-button" onClick={handleFavouriteClick}>
         <Heart size={24} color={isFavourited ? "#ff6347" : "gray"} />
       </button>
     </div>
   );
 }
+
+/* LargeRecipeCard component returns a large card that has the details of a recipe.
+it takes in the following props:
+recipe= a object containing details of the recipe to be displayed.
+onClose= a function to handle the closing of the large card.
+onFavoriteToggle= a function to handle toggling the favourite state of the recipe.
+*/
 
 export default LargeRecipeCard;

@@ -16,3 +16,11 @@ function RecipeList({ recipes, onRecipeClick }) {
 }
 
 export default RecipeList;
+
+/*
+This component is responsible for showing the list of recipe cards.
+The function "RecipeList" recieves two props namely:
+
+Recipes = this is an array of the all the recipes found in the json object
+onRecipeClick = this a function that is responsible to handling click events that occur when clicking on a recipe card
+*/

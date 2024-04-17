@@ -1,6 +1,6 @@
 import React from "react";
 import "./RecipeCard.css";
-import { ForkKnife, Leaf, Check, Clock, Heart } from "phosphor-react"; // Import icons
+import { ForkKnife, Leaf, Check, Clock } from "phosphor-react";
 
 function RecipeCard({ recipe, onClick }) {
   return (
@@ -27,5 +27,15 @@ function RecipeCard({ recipe, onClick }) {
     </article>
   );
 }
+
+/*
+this component is responsible for making each individual recipe card
+the two props taken here are 
+recipe = getting all the data from the recipes in the json object 
+onClick = handling click events on the card
+
+
+within the function various parts of the card are being generated such as the name, icons, and the dietary restriction for the recipe
+*/
 
 export default RecipeCard;

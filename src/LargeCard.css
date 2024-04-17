@@ -40,7 +40,7 @@
   color: #ff4d4d;
 }
 
-.favorite-button {
+.favourite-button {
   position: absolute;
   top: 8px;
   left: 8px;
@@ -49,13 +49,13 @@
   cursor: pointer;
 }
 
-.large-recipe-card .favorite-button {
+.large-recipe-card .favourite-button {
   background-color: transparent;
   border: none;
   cursor: pointer;
   outline: none;
 }
 
-.large-recipe-card .favorite-button:hover {
+.large-recipe-card .favourite-button:hover {
   opacity: 0.8;
 }
