@@ -57,7 +57,7 @@ function App() {
             <div className="search-container">
               <input
                 type="text"
-                placeholder="Search"
+                placeholder="Browse Recipes..."
                 value={searchQuery}
                 onChange={handleSearchInputChange}
               />

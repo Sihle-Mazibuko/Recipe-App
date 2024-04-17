@@ -20,10 +20,14 @@ function NavBar({ onFilterChange }) {
     onFilterChange(filterOption);
   };
 
+  const handleAllClick = () => {
+    onFilterChange("all"); // Reset the filter
+  };
+
   return (
     <nav className="navbar">
       <ul>
-        <li>All</li>
+        <li onClick={handleAllClick}>All</li>
         <li onClick={toggleDietarySubmenu}>
           Dietary Restrictions <CaretDown className="dropdown-arrow" />
           {showDietarySubmenu && (
