@@ -11,6 +11,16 @@ function App() {
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [filter, setFilter] = useState("all");
 
+  // Function to handle toggling the "favourited" property of a recipe
+  const handleFavoriteToggle = (recipeName) => {
+    recipeData.recipes.forEach((recipe) => {
+      if (recipe.name === recipeName) {
+        recipe.favourited = !recipe.favourited;
+        console.log(`${recipe.name} has been favourited.`);
+      }
+    });
+  };
+
   // Filter recipes based on the search query and filter option
   const filteredRecipes = recipeData.recipes.filter((recipe) => {
     const nameMatches = recipe.name
@@ -49,9 +59,9 @@ function App() {
   };
 
   return (
-    <div className="app-container">
+    <html className="app-container">
       <header>
-        <div className="header-content">
+        <section className="header-content">
           <h1>Easy Eats</h1>
           <nav className="search-bar">
             <div className="search-container">
@@ -63,7 +73,7 @@ function App() {
               />
             </div>
           </nav>
-        </div>
+        </section>
         <NavBar onFilterChange={handleFilterChange} />
       </header>
       <main>
@@ -71,6 +81,7 @@ function App() {
           <LargeRecipeCard
             recipe={selectedRecipe}
             onClose={handleCloseLargeCard}
+            onFavoriteToggle={handleFavoriteToggle}
           />
         ) : (
           <RecipeList
@@ -82,7 +93,7 @@ function App() {
       {/* <footer>
         <p>&copy; 2024 Easy Eats. All rights reserved.</p>
       </footer> */}
-    </div>
+    </html>
   );
 }
 

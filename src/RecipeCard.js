@@ -1,12 +1,10 @@
 import React from "react";
 import "./RecipeCard.css";
-import { ForkKnife, Leaf, Check, Clock } from "phosphor-react"; // Import icons
+import { ForkKnife, Leaf, Check, Clock, Heart } from "phosphor-react"; // Import icons
 
 function RecipeCard({ recipe, onClick }) {
   return (
     <article className="recipe-card" onClick={onClick}>
-      {" "}
-      {/* Attach onClick handler to the card */}
       <section className="recipe-icon">
         <ForkKnife />
       </section>

@@ -8,7 +8,7 @@ function RecipeList({ recipes, onRecipeClick }) {
         <RecipeCard
           key={recipe.name}
           recipe={recipe}
-          onClick={() => onRecipeClick(recipe)} // Pass the clicked recipe to the parent component
+          onClick={() => onRecipeClick(recipe)}
         />
       ))}
     </article>

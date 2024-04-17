@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./LargeCard.css"; // Import the CSS file for styling
-import { XCircle } from "phosphor-react"; // Import the CircleX icon
+import { XCircle, Heart } from "phosphor-react"; // Import the CircleX icon
 
-function LargeRecipeCard({ recipe, onClose }) {
-  // Sample Lorem Ipsum text for instructions
+function LargeRecipeCard({ recipe, onClose, onFavoriteToggle }) {
+  const [isFavourited, setIsFavourited] = useState(recipe.favourited); // State hook to manage the favourited state
+
   const loremText = `
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
     Sed hendrerit purus ut lacus malesuada, nec bibendum ligula lobortis. 
@@ -20,6 +21,15 @@ function LargeRecipeCard({ recipe, onClose }) {
     onClose();
   };
 
+  // Handle click on favorite button
+  const handleFavoriteClick = () => {
+    const updatedFavourited = !isFavourited; // Toggle the favourited state
+    setIsFavourited(updatedFavourited); // Update the state
+
+    // Call the onFavoriteToggle function passed from the parent component
+    onFavoriteToggle(recipe, updatedFavourited);
+  };
+
   return (
     <div className="large-recipe-card">
       <button className="close-button" onClick={handleCloseClick}>
@@ -30,6 +40,9 @@ function LargeRecipeCard({ recipe, onClose }) {
       <p>{recipe.lactoseFree ? "Lactose-Free" : "Contains Dairy"}</p>
       <p>Prep Time: {recipe.prepTime}</p>
       <p>Instructions: {loremText}</p>
+      <button className="favorite-button" onClick={handleFavoriteClick}>
+        <Heart size={24} color={isFavourited ? "#ff6347" : "gray"} />
+      </button>
     </div>
   );
 }
