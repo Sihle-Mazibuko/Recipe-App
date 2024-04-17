@@ -1,11 +1,14 @@
 .large-recipe-card {
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  border-radius: 8px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin: 20px auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
   max-width: 600px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.404);
+  border-radius: 10px;
 }
 
 .large-recipe-card h2 {
@@ -16,4 +19,23 @@
 .large-recipe-card p {
   font-size: 16px;
   margin-bottom: 8px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #aaa;
+  font-size: 24px;
+}
+
+.close-button:focus {
+  outline: none;
+}
+
+.close-button:hover {
+  color: #ff4d4d;
 }
