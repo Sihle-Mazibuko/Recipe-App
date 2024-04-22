@@ -39,23 +39,3 @@
 .close-button:hover {
   color: #ff4d4d;
 }
-
-.favourite-button {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.large-recipe-card .favourite-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-}
-
-.large-recipe-card .favourite-button:hover {
-  opacity: 0.8;
-}

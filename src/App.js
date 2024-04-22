@@ -11,18 +11,6 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [filter, setFilter] = useState("all");
-  const [favouriteRecipes, setFavouriteRecipes] = useState([]);
-
-  // this function handles toggling the "favourited" property of a recipe
-  const handleFavouriteToggle = (recipeName) => {
-    const updatedRecipes = recipeData.recipes.map((recipe) => {
-      if (recipe.name === recipeName) {
-        return { ...recipe, favourited: !recipe.favourited };
-      }
-      return recipe;
-    });
-    setFavouriteRecipes(updatedRecipes.filter((recipe) => recipe.favourited));
-  };
 
   // this filters recipes based on the search input and filter option
   const filteredRecipes = recipeData.recipes.filter((recipe) => {
@@ -77,17 +65,13 @@ function App() {
             </div>
           </nav>
         </div>
-        <NavBar
-          onFilterChange={handleFilterChange}
-          favouriteRecipes={favouriteRecipes}
-        />
+        <NavBar onFilterChange={handleFilterChange} />
       </header>
       <main>
         {selectedRecipe ? (
           <LargeRecipeCard
             recipe={selectedRecipe}
             onClose={handleCloseLargeCard}
-            onFavoriteToggle={handleFavouriteToggle}
           />
         ) : (
           <RecipeList

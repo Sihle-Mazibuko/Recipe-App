@@ -1,6 +1,6 @@
 import React from "react";
 import "./RecipeCard.css";
-import { ForkKnife, Leaf, Check, Clock } from "phosphor-react";
+import { ForkKnife, Leaf, Check, Clock, Heart } from "phosphor-react";
 
 function RecipeCard({ recipe, onClick }) {
   return (
@@ -23,6 +23,9 @@ function RecipeCard({ recipe, onClick }) {
             <Check /> Contains Dairy
           </p>
         )}
+        <button className="heart-button">
+          <Heart size={30} />
+        </button>
       </section>
     </article>
   );

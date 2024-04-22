@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./LargeCard.css";
-import { XCircle, Heart } from "phosphor-react";
+import { XCircle } from "phosphor-react";
 
 function LargeRecipeCard({ recipe, onClose, onFavoriteToggle }) {
   const [isFavourited, setIsFavourited] = useState(recipe.favourited); // state hook to used manage the favourited state
@@ -21,15 +21,6 @@ function LargeRecipeCard({ recipe, onClose, onFavoriteToggle }) {
     onClose();
   };
 
-  // manages click on favourite button (add recipe to favourties)
-  const handleFavouriteClick = () => {
-    const updatedFavourited = !isFavourited; // Toggle the favourited state
-    setIsFavourited(updatedFavourited); // Update the state
-
-    // calls the onFavoriteToggle function passed from the parent component so we can regularly update our favourite recipes
-    onFavoriteToggle(recipe, updatedFavourited);
-  };
-
   return (
     <div className="large-recipe-card">
       <button className="close-button" onClick={handleCloseClick}>
@@ -39,10 +30,8 @@ function LargeRecipeCard({ recipe, onClose, onFavoriteToggle }) {
       <p>{recipe.vegetarian ? "Vegetarian" : "Not Vegetarian"}</p>
       <p>{recipe.lactoseFree ? "Lactose-Free" : "Contains Dairy"}</p>
       <p>Prep Time: {recipe.prepTime}</p>
+      <p>Can be eaten during: {recipe.mealTime}</p>
       <p>Instructions: {loremText}</p>
-      <button className="favourite-button" onClick={handleFavouriteClick}>
-        <Heart size={24} color={isFavourited ? "#ff6347" : "gray"} />
-      </button>
     </div>
   );
 }
